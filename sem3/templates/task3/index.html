@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% if grades %}
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <th>Предмет</th>
+        <th>Оценка</th>
+        <th>Имя студента</th>
+        <th>Фамилия студента</th>
+        <th>Группа студента</th>
+        <th>Почта студента</th>
+    </tr>
+    {% for grade in grades %}
+    <tr>
+        <td>{{ grade.subject }}</td>
+        <td>{{ grade.grade }}</td>
+        <td>{{ grade.student.first_name }}</td>
+        <td>{{ grade.student.last_name }}</td>
+        <td>{{ grade.student.group }}</td>
+        <td>{{ grade.student.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h1>Книг нету =(</h1>
+<h3>Чтобы добавить книги сделайте эти 2 команды в терминале</h3>
+<ul class="fs-3">
+    <li>flask init-db</li>
+    <li>flask fill_db</li>
+</ul>
+{% endif %}
+{% endblock %}

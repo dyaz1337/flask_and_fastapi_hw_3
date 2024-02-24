@@ -1,0 +1,17 @@
+{% macro render_field(field, cls="form-control") %}
+<div class="row g-3 align-items-center">
+    <div class="col-2">
+        {{ field.label(class="form-label") }}
+    </div>
+    <div class="col-auto">
+        {{ field(class=cls) }}
+    </div>
+    {% if field.errors %}
+    <div class="col-auto">
+        {% for error in field.errors %}
+        <span class="form-text">{{ error }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endmacro %}

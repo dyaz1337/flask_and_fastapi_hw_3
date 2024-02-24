@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+{% if books %}
+<table class="table table-hover table-bordered table-striped">
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.name }}</td>
+        <td>{{ book.year }}</td>
+        <td>{{ book.count }}</td>
+        <td>{{ book.author.first_name }}</td>
+        <td>{{ book.author.last_name }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h1>Книг нету =(</h1>
+<h3>Чтобы добавить книги сделайте эти 2 команды в терминале</h3>
+<ul class="fs-3">
+    <li>flask init-db</li>
+    <li>flask fill_db</li>
+</ul>
+{% endif %}
+{% endblock %}

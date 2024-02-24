@@ -1,0 +1,17 @@
+{% from "_formhelper.html" import render_field %}
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ render_field(form.name) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.repeat_password) }}
+    {{ render_field(form.birth_date) }}
+    {{ render_field(form.consent, cls='form-check-label') }}
+    <br>
+    {{ form.submit(class="btn btn-secondary") }}
+</form>
+{% endblock %}
